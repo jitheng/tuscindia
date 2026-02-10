@@ -25,6 +25,12 @@ export async function POST(request: NextRequest) {
     // Initialize Resend with API key
     const resend = new Resend(process.env.RESEND_API_KEY)
 
+    // Use configurable from address - falls back to Resend's onboarding address
+    // for unverified domains. Set RESEND_FROM_EMAIL in .env.local once the domain
+    // tuscindia.com is verified in the Resend dashboard.
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'
+    const toEmail = process.env.RESEND_TO_EMAIL || 'hello@tuscindia.com'
+
     // Email to TUSC
     const tuscrMailContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -56,42 +62,47 @@ export async function POST(request: NextRequest) {
     `
 
     // Send email to TUSC
-    const tuscrEmail = await resend.emails.send({
-      from: 'noreply@tuscindia.com',
-      to: 'hello@tuscindia.com',
+    const { data: tuscrEmailData, error: tuscrEmailError } = await resend.emails.send({
+      from: fromEmail,
+      to: toEmail,
+      reply_to: email,
       subject: `New Message from ${name}`,
       html: tuscrMailContent,
     })
 
-    if (tuscrEmail.error) {
-      console.error('Error sending email to TUSC:', tuscrEmail.error)
+    if (tuscrEmailError) {
+      console.error('Error sending email to TUSC:', tuscrEmailError)
       return NextResponse.json(
-        { error: 'Failed to send message' },
+        { error: 'Failed to send message. Please try again or email us directly at hello@tuscindia.com.' },
         { status: 500 }
       )
     }
 
-    // Send auto-reply to sender
-    const senderEmail = await resend.emails.send({
-      from: 'noreply@tuscindia.com',
-      to: email,
-      subject: 'We received your message - TUSC',
-      html: senderMailContent,
-    })
+    console.log('Email sent to TUSC, id:', tuscrEmailData?.id)
 
-    if (senderEmail.error) {
-      console.error('Error sending reply email:', senderEmail.error)
-      // Don't fail the request if auto-reply fails, but log it
+    // Send auto-reply to sender (only when using a verified domain, not onboarding@resend.dev)
+    if (fromEmail !== 'onboarding@resend.dev') {
+      const { error: senderEmailError } = await resend.emails.send({
+        from: fromEmail,
+        to: email,
+        subject: 'We received your message - TUSC',
+        html: senderMailContent,
+      })
+
+      if (senderEmailError) {
+        // Don't fail the request if auto-reply fails, but log the error
+        console.error('Error sending auto-reply to sender:', senderEmailError)
+      }
     }
 
     return NextResponse.json(
-      { message: 'Email sent successfully' },
+      { message: 'Message sent successfully' },
       { status: 200 }
     )
   } catch (error) {
-    console.error('Error sending email:', error)
+    console.error('Unexpected error in send-message route:', error)
     return NextResponse.json(
-      { error: 'Failed to send message' },
+      { error: 'An unexpected error occurred. Please try again later.' },
       { status: 500 }
     )
   }
