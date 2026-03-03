@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { X } from 'lucide-react'
-import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
 const categoriesData = [
@@ -149,10 +148,9 @@ export function CategoriesModal({ isOpen, onClose }: CategoriesModalProps) {
                 <h3 className="text-2xl font-serif font-medium mb-8">{selected.name}</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                   {selected.subcategories.map((subcategory) => (
-                    <Link
+                    <div
                       key={typeof subcategory === 'string' ? subcategory : subcategory.name}
-                      href={typeof subcategory !== 'string' && subcategory.href ? subcategory.href : '#'}
-                      className="group overflow-hidden rounded-lg border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 cursor-pointer block"
+                      className="group overflow-hidden rounded-lg border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 cursor-pointer"
                     >
                       {/* Image */}
                       <div className="w-full aspect-square bg-gradient-to-br from-primary/10 to-primary/5 overflow-hidden relative">
@@ -174,7 +172,7 @@ export function CategoriesModal({ isOpen, onClose }: CategoriesModalProps) {
                           {typeof subcategory === 'string' ? subcategory : subcategory.name}
                         </h4>
                       </div>
-                    </Link>
+                    </div>
                   ))}
                 </div>
               </>

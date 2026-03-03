@@ -18,9 +18,6 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/categories" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
-              Collections
-            </Link>
             <Link href="#about" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
               About
             </Link>
@@ -62,9 +59,6 @@ export function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <nav className="md:hidden pt-4 pb-2 flex flex-col gap-4">
-            <Link href="/categories" className="text-sm font-medium py-2" onClick={() => setIsMenuOpen(false)}>
-              Collections
-            </Link>
             <Link href="#about" className="text-sm font-medium py-2" onClick={() => setIsMenuOpen(false)}>
               About
             </Link>

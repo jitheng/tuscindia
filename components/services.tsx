@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { Lightbulb, Briefcase, CheckCircle2, Eye, Truck, ChevronDown, ChevronUp } from "lucide-react"
 import { Button } from '@/components/ui/button'
 import { ProcessFlow } from './process-flow'
@@ -77,7 +78,7 @@ export function Services() {
     <section id="services" className="py-24 md:py-32 bg-muted/20">
       <div className="container mx-auto px-6">
         {/* Header Section */}
-        <div className="max-w-4xl mx-auto text-center mb-16">
+        <div className="max-w-4xl mb-16">
           <p className="text-sm uppercase tracking-[0.2em] text-primary mb-4 font-medium">What We Do</p>
           <h2 className="font-serif text-4xl md:text-5xl font-medium leading-tight mb-6">Our Services</h2>
           <p className="text-lg text-primary font-medium mb-6">Source Smarter. Manufacture Better. Scale Faster.</p>
@@ -88,8 +89,8 @@ export function Services() {
         </div>
 
         {/* Trust Statement */}
-        <div className="bg-card border border-border rounded-xl p-6 md:p-8 mb-16 max-w-3xl mx-auto shadow-sm">
-          <p className="text-center text-sm md:text-base text-muted-foreground leading-relaxed">
+        <div className="bg-card border border-border rounded-xl p-6 md:p-8 mb-16 max-w-3xl shadow-sm">
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
             <span className="font-semibold text-foreground text-lg block mb-2">Built for Buyers Who Want Control — Without the Complexity</span>
             Whether you're placing a small MOQ or scaling bulk production, we ensure right vendors, right quality, right timelines — every single time.
           </p>
@@ -165,12 +166,12 @@ export function Services() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-20">
-          <Button size="lg" className="w-full md:w-auto text-base px-8">
-            Talk to a Sourcing Expert
+        <div className="flex flex-col md:flex-row gap-4 justify-start items-start mb-20">
+          <Button size="lg" asChild className="w-full md:w-auto text-base px-8">
+            <Link href="#contact">Talk to a Sourcing Expert</Link>
           </Button>
-          <Button size="lg" variant="outline" className="w-full md:w-auto bg-transparent text-base px-8">
-            View Our Process
+          <Button size="lg" variant="outline" asChild className="w-full md:w-auto bg-transparent text-base px-8">
+            <Link href="#services">View Our Process</Link>
           </Button>
         </div>
 
@@ -178,8 +179,8 @@ export function Services() {
         <ProcessFlow />
 
         {/* Closing Statement */}
-        <div className="mt-24 text-center">
-          <p className="text-lg text-muted-foreground font-medium max-w-3xl mx-auto leading-relaxed">
+        <div className="mt-24">
+          <p className="text-lg text-muted-foreground font-medium max-w-3xl leading-relaxed">
             From sourcing to shipping, we act as your extended supply-chain team — on the ground, in control, and always aligned with your business goals.
           </p>
         </div>
