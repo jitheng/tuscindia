@@ -20,7 +20,7 @@ export function WhyTusc() {
   return (
     <section id="why-tusc" className="py-24 md:py-32 bg-primary text-primary-foreground">
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className="max-w-3xl mb-16">
           <p className="text-sm uppercase tracking-[0.2em] opacity-80 mb-4 font-medium">The TUSC Difference</p>
           <h2 className="font-serif text-4xl md:text-5xl font-medium leading-tight mb-6">
             Why India lags in exports — and how we{"'"}re changing that

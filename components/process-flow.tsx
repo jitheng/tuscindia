@@ -14,7 +14,7 @@ const processSteps = [
 export function ProcessFlow() {
   return (
     <div className="mt-20 pt-16 border-t border-border">
-      <h3 className="font-serif text-2xl md:text-3xl font-medium text-center mb-12">Our Process Flow</h3>
+      <h3 className="font-serif text-2xl md:text-3xl font-medium mb-12">Our Process Flow</h3>
       
       <div className="overflow-x-auto">
         <div className="flex items-center justify-between min-w-max gap-4 md:gap-2">
