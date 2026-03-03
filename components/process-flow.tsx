@@ -17,7 +17,7 @@ export function ProcessFlow() {
       <h3 className="font-serif text-2xl md:text-3xl font-medium mb-12">Our Process Flow</h3>
       
       <div className="overflow-x-auto">
-        <div className="flex items-center justify-between min-w-max gap-4 md:gap-2">
+        <div className="flex items-start justify-between min-w-max gap-4 md:gap-2">
           {processSteps.map((step, index) => (
             <div key={index} className="flex flex-col items-center">
               {/* Step Circle */}

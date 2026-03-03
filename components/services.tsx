@@ -137,7 +137,7 @@ export function Services() {
                 {/* Expandable Details */}
                 {expandedService === index && (
                   <div className="px-6 pb-6 pt-2 border-t border-border bg-muted/10 animate-in slide-in-from-top-2 duration-200">
-                    <div className="ml-[4.5rem]">
+                    <div>
                       {/* Highlights */}
                       <div className="mb-4">
                         <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground/70 mb-3">Key Features:</h4>
