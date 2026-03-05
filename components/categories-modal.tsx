@@ -526,7 +526,7 @@ export function CategoriesModal({ isOpen, onClose }: CategoriesModalProps) {
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
       <div className="bg-background rounded-xl max-w-5xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 bg-background border-b border-border p-6 flex items-center justify-between">
+        <div className="sticky top-0 z-10 bg-background border-b border-border p-6 flex items-center justify-between">
           <div>
             <p className="text-sm uppercase tracking-[0.2em] text-primary mb-2 font-medium">Browse</p>
             <h2 className="font-serif text-3xl font-medium">All Categories</h2>
