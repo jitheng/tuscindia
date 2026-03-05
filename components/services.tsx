@@ -97,7 +97,7 @@ export function Services() {
         </div>
 
         {/* Interactive Service Cards */}
-        <div className="max-w-5xl mx-auto mb-20">
+        <div className="max-w-5xl mb-20">
           <div className="space-y-4">
             {services.map((service, index) => (
               <div
